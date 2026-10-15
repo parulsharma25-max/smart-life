@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartLife - Personal Productivity Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>SmartLife</h2>
+                <p>Personal Manager</p>
+            </div>
+
+            <nav class="navigation">
+
+                <button class="nav-item active" data-section="dashboard">
+                    Dashboard
+                </button>
+
+                <button class="nav-item" data-section="tasks">
+                    Tasks
+                </button>
+
+                <button class="nav-item" data-section="expenses">
+                    Expenses
+                </button>
+
+                <button class="nav-item" data-section="goals">
+                    Goals
+                </button>
+
+                <button class="nav-item" data-section="notes">
+                    Notes
+                </button>
+
+                <button class="nav-item" data-section="settings">
+                    Settings
+                </button>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Stay organized.</p>
+                <p>Stay productive.</p>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="header">
+
+                <div>
+                    <h1>
+                        <span id="greeting">Good Morning</span>,
+                        <span id="welcomeName"></span> 
+                    </h1>
+
+                    <p>Here's your productivity overview for today.</p>
+                </div>
+
+                <div class="profile">
+
+                    <div class="profile-avatar" id="profileAvatar">
+                        U
+                    </div>
+
+                    <div>
+                        <strong id="profileName">User</strong>
+                        <span>Student</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Dashboard</h2>
+                        <p>Manage your day from one place.</p>
+                    </div>
+                </div>
+
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <span>Total Tasks</span>
+                        <h3 id="totalTasks">0</h3>
+                        <p>Tasks created</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Completed</span>
+                        <h3 id="completedTasks">0</h3>
+                        <p>Tasks completed</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Total Expenses</span>
+                        <h3 id="totalExpenses">₹0</h3>
+                        <p>Your spending</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Active Goals</span>
+                        <h3 id="activeGoals">0</h3>
+                        <p>Goals in progress</p>
+                    </div>
+
+                </div>
+
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+
+                    <!-- Today's Tasks -->
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Today's Tasks</h3>
+                                <p>Your upcoming work</p>
+                            </div>
+
+                            <button type="button" class="small-btn" data-section="tasks">
+                                View All
+                            </button>
+
+                        </div>
+
+                        <div id="dashboardTasks" class="task-preview">
+                            <p class="empty-message">
+                                No tasks added yet.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Goals -->
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Goal Progress</h3>
+                                <p>Track your progress</p>
+                            </div>
+
+                            <button type="button" class="small-btn" data-section="goals">
+                                View All
+                            </button>
+
+                        </div>
+
+                        <div id="dashboardGoals" class="goal-preview">
+                            <p class="empty-message">
+                                No goals added yet.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Recent Expenses -->
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Recent Expenses</h3>
+                                <p>Your latest spending</p>
+                            </div>
+
+                            <button type="button" class="small-btn" data-section="expenses">
+                                View All
+                            </button>
+
+                        </div>
+
+                        <div id="dashboardExpenses" class="expense-preview">
+                            <p class="empty-message">
+                                No expenses added yet.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quick Notes -->
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Quick Notes</h3>
+                                <p>Your recent notes</p>
+                            </div>
+
+                            <button type="button" class="small-btn" data-section="notes">
+                                View All
+                            </button>
+
+                        </div>
+
+                        <div id="dashboardNotes" class="notes-preview">
+                            <p class="empty-message">
+                                No notes added yet.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Tasks Section -->
+            <section id="tasks" class="section">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Task Manager</h2>
+                        <p>Create and manage your daily tasks.</p>
+                    </div>
+                </div>
+
+                <div class="content-card">
+
+                    <form id="taskForm">
+
+                        <div class="form-group">
+
+                            <label for="taskTitle">
+                                Task Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="taskTitle"
+                                placeholder="Enter task title"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="taskCategory">
+                                    Category
+                                </label>
+
+                                <select id="taskCategory">
+
+                                    <option value="Study">Study</option>
+                                    <option value="Work">Work</option>
+                                    <option value="Personal">Personal</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Other">Other</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="taskPriority">
+                                    Priority
+                                </label>
+
+                                <select id="taskPriority">
+
+                                    <option value="High">High</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Low">Low</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="taskDate">
+                                    Due Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="taskDate"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            + Add Task
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="list-header">
+
+                        <h3>My Tasks</h3>
+
+                        <input
+                            type="search"
+                            id="taskSearch"
+                            placeholder="Search tasks..."
+                        >
+
+                    </div>
+
+                    <div id="taskList">
+
+                        <p class="empty-message">
+                            No tasks available.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Expenses Section -->
+            <section id="expenses" class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Expense Tracker</h2>
+                        <p>Track where your money goes.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <form id="expenseForm">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="expenseAmount">
+                                    Amount
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="expenseAmount"
+                                    placeholder="₹ 0"
+                                    min="0"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="expenseCategory">
+                                    Category
+                                </label>
+
+                                <select id="expenseCategory">
+
+                                    <option value="Food">Food</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Shopping">Shopping</option>
+                                    <option value="Education">Education</option>
+                                    <option value="Bills">Bills</option>
+                                    <option value="Entertainment">Entertainment</option>
+                                    <option value="Other">Other</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="expenseDate">
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="expenseDate"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="expenseDescription">
+                                Description
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expenseDescription"
+                                placeholder="What did you spend on?"
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            + Add Expense
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="expense-total">
+
+                        <span>Total Expenses</span>
+
+                        <strong id="expenseTotal">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                    <div id="expenseList">
+
+                        <p class="empty-message">
+                            No expenses available.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Goals Section -->
+            <section id="goals" class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Goal Tracker</h2>
+                        <p>Set goals and track your progress.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <form id="goalForm">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="goalName">
+                                    Goal Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="goalName"
+                                    placeholder="Example: Learn JavaScript"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="goalProgress">
+                                    Progress (%)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="goalProgress"
+                                    min="0"
+                                    max="100"
+                                    placeholder="0 - 100"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            + Add Goal
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div
+                    id="goalList"
+                    class="goal-grid"
+                >
+
+                    <p class="empty-message">
+                        No goals available.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Notes Section -->
+            <section id="notes" class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Notes</h2>
+                        <p>Save your important ideas and information.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <form id="noteForm">
+
+                        <div class="form-group">
+
+                            <label for="noteTitle">
+                                Note Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="noteTitle"
+                                placeholder="Enter note title"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="noteContent">
+                                Note
+                            </label>
+
+                            <textarea
+                                id="noteContent"
+                                rows="5"
+                                placeholder="Write your note..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            + Save Note
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="list-header">
+
+                        <h3>My Notes</h3>
+
+                        <input
+                            type="search"
+                            id="noteSearch"
+                            placeholder="Search notes..."
+                        >
+
+                    </div>
+
+
+                    <div id="noteList">
+
+                        <p class="empty-message">
+                            No notes available.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Settings</h2>
+                        <p>Customize your SmartLife experience.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="setting-item">
+
+                        <div>
+
+                            <h3>Appearance</h3>
+
+                            <p>
+                                Choose your preferred theme.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="themeToggle"
+                            class="secondary-btn"
+                        >
+                            🌙 Dark Mode
+                        </button>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+
+                            <h3>Profile</h3>
+
+                            <p>
+                                Personalize your dashboard.
+                            </p>
+
+                        </div>
+
+
+                        <input
+                            type="text"
+                            id="userName"
+                            value=""
+                            placeholder="Enter your name"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
